@@ -15,6 +15,11 @@ app.use(express.json());
 // Serve static files from the root directory
 app.use(express.static(__dirname));
 
+// Correctly serve the landing page at the root
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Route for local verification testing
 app.get('/api/verify', (req, res) => {
     res.redirect('/dashboard.html');
