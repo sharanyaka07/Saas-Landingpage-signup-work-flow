@@ -20,9 +20,22 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Explicit routes for pages to avoid catch-all redirection
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname, 'signup.html'));
+});
+
+app.get('/signin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'signin.html'));
+});
+
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dashboard.html'));
+});
+
 // Route for local verification testing
 app.get('/api/verify', (req, res) => {
-    res.redirect('/dashboard.html');
+    res.redirect('/dashboard');
 });
 
 // Catch-all route for any other requests to serve index.html

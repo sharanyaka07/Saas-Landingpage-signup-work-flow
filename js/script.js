@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 2. Protect Dashboard & Handle Profile Display
-    const isDashboard = window.location.pathname.includes('dashboard.html');
+    const isDashboard = window.location.pathname.includes('dashboard');
     if (isDashboard && supabaseClient) {
         const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
 
         if (!session) {
             console.log('No active session, redirecting to sign-in...');
-            window.location.href = 'signin.html';
+            window.location.href = '/signin';
             return;
         }
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (signOutBtn) {
             signOutBtn.addEventListener('click', async () => {
                 await supabaseClient.auth.signOut();
-                window.location.href = 'signin.html';
+                window.location.href = '/signin';
             });
         }
     }
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (error) throw error;
 
                 console.log('Sign in success:', data);
-                window.location.href = 'dashboard.html';
+                window.location.href = '/dashboard';
             } catch (err) {
                 showAlert('error', err.message);
             } finally {
