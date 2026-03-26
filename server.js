@@ -25,6 +25,11 @@ app.get('/api/verify', (req, res) => {
     res.redirect('/dashboard.html');
 });
 
+// Catch-all route for any other requests to serve index.html
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 const server = app.listen(PORT, () => {
     console.log(`\x1b[32m🚀 Local server running on http://localhost:${PORT}\x1b[00m`);
     console.log(`\x1b[36m📄 Serving files from: ${__dirname}\x1b[00m`);
