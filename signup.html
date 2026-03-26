@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | NexusSaaS</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#f0fdfa', 500: '#14b8a6', 600: '#0d9488' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Supabase JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body class="font-sans antialiased text-gray-900 bg-slate-50 min-h-screen flex items-center justify-center p-4">
+    
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-brand-500/10 blur-3xl animate-blob"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-3xl animate-blob animation-delay-2000"></div>
+    </div>
+
+    <div class="w-full max-w-md relative z-10 reveal-up">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-blue-600 flex items-center justify-center text-white font-bold text-2xl shadow-lg">N</div>
+                <span class="font-bold text-2xl tracking-tight text-slate-900">NexusSaaS</span>
+            </a>
+            <h1 class="mt-6 text-2xl font-bold text-slate-900">Create your account</h1>
+            <p class="mt-2 text-slate-600">Start your 14-day free trial. No credit card required.</p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-xl border border-slate-200/50">
+            <form id="signupForm" class="space-y-5">
+                
+                <!-- Alert Message Container -->
+                <div id="alertMessage" class="hidden p-4 rounded-lg text-sm font-medium"></div>
+
+                <div>
+                    <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </div>
+                        <input type="text" id="name" name="name" required class="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-xl text-slate-900 input-focus-ring placeholder-slate-400" placeholder="Jane Doe">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email address</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </div>
+                        <input type="email" id="email" name="email" required class="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-xl text-slate-900 input-focus-ring placeholder-slate-400" placeholder="you@company.com">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <i data-lucide="lock" class="w-5 h-5"></i>
+                        </div>
+                        <input type="password" id="password" name="password" required minlength="8" class="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-xl text-slate-900 input-focus-ring placeholder-slate-400" placeholder="••••••••">
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full btn-primary py-3 rounded-xl font-semibold text-lg flex items-center justify-center gap-2 mt-4">
+                    <span>Create Account</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </form>
+            
+            <p class="mt-6 text-center text-sm text-slate-600">
+                Already have an account? <a href="signin.html" class="font-semibold text-brand-600 hover:text-brand-500">Sign in</a>
+            </p>
+
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        // Reveal instantly on load
+        document.querySelector('.reveal-up').classList.add('revealed');
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
